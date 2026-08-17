@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+#
+# Install mechabar dependencies
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 22, 2025
+# License: MIT
+
+DEPS=(
+	bluez-utils
+	brightnessctl
+	fzf
+	libnotify
+	networkmanager
+	pacman-contrib
+	waybar
+)
+
+RESET=$'\e[0m'
+DIM=$'\e[2m'
+U=$'\e[4m'
+RED=$'\e[31m'
+GREEN=$'\e[32m'
+BLUE=$'\e[34m'
+
+debug() { printf "%b" "$*" >&2; }
+
+install() {
+	local package
+	for package in "$@"; do
+		if pacman -Qi "$package" &>/dev/null; then
+			debug "${DIM}[SKIP]${RESET} $package\n"
+		else
+			debug "\n${DIM}[    ]${RESET} $package...\n"
+
+			if sudo pacman -S --noconfirm "$package"; then
+				debug "\n${GREEN}[DONE]${RESET} $package\n"
+			else
+				debug "\n${RED}[ERR ]${RESET} $package\n"
+				((ERRORS += 1))
+			fi
+		fi
+	done
+}
+
+main() {
+	debug "${BLUE}Installing dependencies...${RESET}\n"
+
+	install "${DEPS[@]}"
+
+	printf $'\n'
+	read -rp 'Install "CommitMono Nerd Font" (otf-commit-mono-nerd)? [Y/n] '
+
+	case $REPLY in
+		'' | [Yy])
+			install otf-commit-mono-nerd
+			;;
+		*)
+			local v="${DIM}│${RESET}"
+
+			cat <<-EOF
+
+				${v} Different fonts render characters in different sizes, which
+				${v} can affect the layout. Import your preferred font file from
+				${v} ${U}./styles/fonts/${RESET} to ${U}./style.css${RESET}:
+				${v}
+				${v} ${DIM}/* @import "styles/fonts/commit-mono.css"; */${RESET}
+				${v} @import ${U}"styles/fonts/jetbrains-mono.css"${RESET};
+			EOF
+			;;
+	esac
+
+	debug "\n${BLUE}Restarting Waybar...${RESET}\n"
+
+	if ! (systemctl --user is-enabled waybar.service &&
+		systemctl --user restart waybar.service) &>/dev/null; then
+		pkill waybar
+		waybar &>/dev/null &
+		disown
+	fi
+
+	if ((ERRORS > 0)); then
+		debug "\nInstallation completed with ${RED}$ERRORS error(s)${RESET}\n"
+	else
+		debug "\nInstallation complete!\n"
+	fi
+}
+
+main
