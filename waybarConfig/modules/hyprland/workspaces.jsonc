@@ -3,7 +3,7 @@
 		"persistent-workspaces": {
 			"*": 5
 		},
-		"format": "{icon}",
+		"format": "{id} {icon}",
 		"format-icons": {
 			"active": "",
 			"default": ""
