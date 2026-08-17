@@ -1,5 +1,7 @@
 # Working Hyprland Window Manager Rice
 
+## Normal installation
+	install hyprland using your package manager - eg; pacman -S hyprland
 ## Put waybar to config
 	mv waybarConfig warbar	
 	cp -r waybar ~/.config/
