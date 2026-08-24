@@ -1,15 +1,16 @@
 {
 	"hyprland/workspaces": {
 		"persistent-workspaces": {
-			"*": 5
+			"*": 2
 		},
 		"format": "{id} {icon}",
 		"format-icons": {
 			"active": "",
 			"default": ""
 		},
-		"on-scroll-up": "hyprctl dispatch workspace +1",
-		"on-scroll-down": "hyprctl dispatch workspace -1",
+    "on-click": "I tried it failed",
+		"on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
+		"on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
 		"cursor": true
 	}
 }
