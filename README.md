@@ -2,6 +2,7 @@
 
 ## Normal installation
 	install hyprland using your package manager - eg; pacman -S hyprland
+    sudo pacman -S hyprland hyprpaper waybar xdg-desktop-portal-hyprland hypridle hyprlock
 ## Put waybar to config
 	mv waybarConfig warbar	
 	cp -r waybar ~/.config/
