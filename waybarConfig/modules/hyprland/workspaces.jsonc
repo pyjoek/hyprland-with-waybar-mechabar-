@@ -8,7 +8,7 @@
 			"active": "",
 			"default": ""
 		},
-    "on-click": "I tried it failed",
+    "on-click-right": "kitty -e ~/.config/waybar/scripts/network",
 		"on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
 		"on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
 		"cursor": true

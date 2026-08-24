@@ -18,5 +18,13 @@
 		"tooltip-format-disconnected": "Wi-Fi Disconnected",
 		"tooltip-format-disabled": "Wi-Fi Off",
 		"tooltip-format-ethernet": "<b>Interface</b>: {ifname}"
-	}
+	},
+
+  "network#speed": {
+        "interval": 1,
+        "format": "󰁅 {bandwidthDownBytes}  󰁝 {bandwidthUpBytes}",
+        "format-disconnected": "",
+        "tooltip": true,
+        "tooltip-format": "Download: {bandwidthDownBits}\nUpload: {bandwidthUpBits}"
+    }
 }

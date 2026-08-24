@@ -12,3 +12,7 @@
 
 # For more Infor about the waybar on top
 	https://github.com/sejjy/mechabar
+
+# Lockscreen
+	hyprlock
+	i already set the conf file just copy to .config/hypr
