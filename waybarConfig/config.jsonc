@@ -26,10 +26,8 @@
 	],
 
 	"modules-center": [
-		"hyprland/language",
-
 		"custom/left#bg-1",
-		"temperature",
+		"network#speed",
 
 		"custom/left#bg-2",
 		"memory",
@@ -53,7 +51,8 @@
 		"network",
 		"bluetooth",
 		"custom/update",
-		"custom/right#bg-1"
+		"custom/right#bg-1",
+    "temperature"
 	],
 
 	"modules-right": [
