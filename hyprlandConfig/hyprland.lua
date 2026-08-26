@@ -40,6 +40,7 @@ local fileManager = "thunar"
 local menu = "fuzzel"
 local web = "chromium"
 local wallpaper = 'swaybg -i "/usr/share/wallpapers/garuda-wallpapers/River City Mocha.jpg"'
+local lock = "lock"
 
 -------------------
 ---- AUTOSTART ----
@@ -272,6 +273,7 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd('grimblast --notify copysave area'))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(web))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
