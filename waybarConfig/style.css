@@ -12,11 +12,12 @@
 }
 
 #waybar {
-	background-color: @shadow;
+	background-color: transparent;
+/*  background-color: @shadow;*/
 }
 #waybar > box {
 	margin: 3px;
-	background-color: @bg-0;
+	background-color: transparent; /*@bg-0*/
 }
 
 /* Vertically align modules */
