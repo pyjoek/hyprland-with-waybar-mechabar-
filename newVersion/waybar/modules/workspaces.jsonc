@@ -1,0 +1,20 @@
+{
+  // ───────── Workspaces ─────────
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+			"*": 2
+		},
+		"format": "{id} {icon}",
+		"format-icons": {
+			"active": "",
+			"default": ""
+		},
+    "on-click": "activate",
+    "on-click-right": "hyprctl dispatch 'hl.dsp.focus({ workspace = {id} })'",
+		"on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
+		"on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+		"cursor": true,
+    "all-outputs": false,
+    "active-only": false
+  }
+}
