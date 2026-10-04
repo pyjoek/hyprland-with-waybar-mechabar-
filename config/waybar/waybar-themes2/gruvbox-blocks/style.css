@@ -1,0 +1,71 @@
+/* GRUVBOX BLOCKS — flat retro tiles, inverted (dark text on solid colour) */
+
+@define-color bg     #282828;
+@define-color bg1    #3c3836;
+@define-color fg     #ebdbb2;
+@define-color gray   #a89984;
+@define-color red    #fb4934;
+@define-color green  #b8bb26;
+@define-color yellow #fabd2f;
+@define-color blue   #83a598;
+@define-color purple #d3869b;
+@define-color aqua   #8ec07c;
+@define-color orange #fe8019;
+
+* {
+    border: none; border-radius: 0; min-height: 0;
+    box-shadow: none; text-shadow: none; background-image: none;
+    font-family: "JetBrainsMono Nerd Font"; font-size: 13px; font-weight: bold;
+}
+
+window#waybar {
+    background: @bg; color: @fg;
+    border-bottom: 2px solid #504945;
+}
+
+#custom-appmenu, #clock, #cpu, #memory, #network,
+#backlight, #pulseaudio, #battery, #bluetooth, #tray, #window {
+    padding: 0 13px; margin: 0; color: @bg;
+}
+
+#custom-appmenu { background: @orange; font-size: 17px; padding: 0 16px; }
+#clock          { background: @bg1; color: @fg; }
+#cpu            { background: @aqua; }
+#memory         { background: @blue; }
+#network        { background: @purple; }
+#backlight      { background: @yellow; }
+#pulseaudio     { background: @green; }
+#battery        { background: @fg; }
+
+#workspaces button {
+    color: @gray; background: @bg1;
+    padding: 0 11px; margin: 0;
+}
+#workspaces button:hover  { background: #504945; color: @fg; }
+#workspaces button.active { background: @yellow; color: @bg; }
+#workspaces button.urgent { background: @red; color: @bg; }
+
+#network.disconnected, #pulseaudio.muted { background: @bg1; color: @gray; }
+#battery.charging { background: @green; }
+#battery.warning:not(.charging)  { background: @orange; }
+
+@keyframes blink { to { background-color: @bg; color: @red; } }
+#battery.critical:not(.charging) {
+    background: @red;
+    animation-name: blink; animation-duration: 0.6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite; animation-direction: alternate;
+}
+
+tooltip { background: @bg; border: 2px solid @yellow; }
+tooltip label { color: @fg; padding: 4px; }
+
+#window { background: transparent; color: @fg; padding: 0 14px; }
+#tray { background: @bg1; color: @fg; }
+#bluetooth { background: @blue; }
+#bluetooth.off, #bluetooth.disabled { background: @bg1; color: @gray; }
+
+/* hide the title pill when no window is open */
+window#waybar.empty #window { background: transparent; border-color: transparent; padding: 0; margin: 0; }
+#tray > .passive         { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }

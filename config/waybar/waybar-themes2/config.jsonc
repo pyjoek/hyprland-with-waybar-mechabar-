@@ -1,0 +1,117 @@
+{
+    // Universal Waybar config — works with every theme in this folder.
+    // Hyprland by default. On Sway, replace "hyprland/workspaces" with
+    // "sway/workspaces" and "hyprland/window" with "sway/window".
+
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "spacing": 0,
+    "exclusive": true,
+    "reload_style_on_change": true,
+
+    "modules-left":   ["custom/appmenu", "hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right":  ["tray", "cpu", "memory", "network", "bluetooth",
+                       "backlight", "pulseaudio", "battery"],
+
+    "custom/appmenu": {
+        "format": "󰀻",
+        "tooltip": false,
+        "on-click": "wofi --show drun || rofi -show drun"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "persistent-workspaces": { "*": 5 },
+        "show-special": false,
+        "disable-scroll": false,
+        "tooltip": false
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "rewrite": { "": "" }
+    },
+
+    "clock": {
+        "format": "{:%a %d %b   %H:%M}",
+        "format-alt": "{:%A, %d %B %Y}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": { "today": "<b><u>{}</u></b>" }
+        }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": "󰘚 {usage}%",
+        "tooltip-format": "CPU load: {usage}%"
+    },
+
+    "memory": {
+        "interval": 3,
+        "format": "󰍛 {percentage}%",
+        "tooltip-format": "RAM: {used:0.1f} GiB of {total:0.1f} GiB"
+    },
+
+    "network": {
+        "interval": 3,
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+        "format-alt": "󰈀 {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "tooltip-format-wifi": "{essid}  ({signalStrength}%)\n{ipaddr}",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+        "tooltip-format-disconnected": "Not connected",
+        "on-click-right": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱 {num_connections}",
+        "format-off": "󰂲",
+        "format-disabled": "󰂲",
+        "tooltip-format": "{status}",
+        "tooltip-format-connected": "{device_alias}",
+        "on-click": "blueman-manager"
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 muted",
+        "format-bluetooth": "󰂱 {volume}%",
+        "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip-format": "{desc}"
+    },
+
+    "battery": {
+        "interval": 10,
+        "states": { "warning": 30, "critical": 15 },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾",
+                         "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{timeTo}"
+    }
+}

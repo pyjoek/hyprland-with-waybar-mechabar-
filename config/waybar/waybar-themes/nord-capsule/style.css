@@ -1,0 +1,66 @@
+/* NORD CAPSULE — three capsules (left / centre / right), modules sit inside */
+
+@define-color n0  #2e3440;
+@define-color n1  #3b4252;
+@define-color n4  #d8dee9;
+@define-color n6  #eceff4;
+@define-color n3  #616e88;
+@define-color n7  #8fbcbb;
+@define-color n8  #88c0d0;
+@define-color n9  #81a1c1;
+@define-color n10 #5e81ac;
+@define-color n11 #bf616a;
+@define-color n12 #d08770;
+@define-color n13 #ebcb8b;
+@define-color n14 #a3be8c;
+@define-color n15 #b48ead;
+
+* {
+    border: none; border-radius: 0; min-height: 0;
+    box-shadow: none; text-shadow: none; background-image: none;
+    font-family: "JetBrainsMono Nerd Font"; font-size: 13px;
+}
+
+window#waybar { background: transparent; color: @n4; }
+
+.modules-left, .modules-center, .modules-right {
+    background: alpha(@n0, 0.92);
+    border-radius: 16px;
+    margin: 6px 8px; padding: 0 6px;
+}
+
+#custom-appmenu, #clock, #cpu, #memory, #network,
+#backlight, #pulseaudio, #battery {
+    background: transparent; color: @n4;
+    padding: 0 10px; margin: 4px 1px; border-radius: 11px;
+    transition: background 0.2s ease;
+}
+#custom-appmenu:hover, #clock:hover, #cpu:hover, #memory:hover,
+#network:hover, #backlight:hover, #pulseaudio:hover, #battery:hover {
+    background: @n1;
+}
+
+#custom-appmenu { color: @n8; font-size: 17px; }
+#clock          { color: @n6; }
+#cpu            { color: @n7; }
+#memory         { color: @n15; }
+#network        { color: @n9; }
+#backlight      { color: @n13; }
+#pulseaudio     { color: @n8; }
+#battery        { color: @n14; }
+
+#workspaces button {
+    color: @n3; background: transparent;
+    padding: 0 9px; margin: 4px 1px; border-radius: 11px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+#workspaces button:hover  { background: @n1; color: @n6; }
+#workspaces button.active { background: @n10; color: @n6; }
+#workspaces button.urgent { background: @n11; color: @n6; }
+
+#network.disconnected, #pulseaudio.muted { color: @n3; }
+#battery.warning:not(.charging)  { color: @n12; }
+#battery.critical:not(.charging) { color: @n11; }
+
+tooltip { background: @n0; border: 1px solid @n10; border-radius: 10px; }
+tooltip label { color: @n6; padding: 4px; }

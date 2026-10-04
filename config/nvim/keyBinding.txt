@@ -1,0 +1,70 @@
+ =====================================================
+           NvChad Keybindings Cheatsheet
+=====================================================
+
+Leader key = Space
+
+-----------------------------------------------------
+ GENERAL
+-----------------------------------------------------
+Space + ch          Open NvCheatsheet
+Ctrl + s            Save file
+Ctrl + c            Copy whole file to clipboard
+Esc                 Clear search highlights
+Space + x           Close current buffer
+Tab                 Next buffer
+Shift + Tab         Previous buffer
+Space + n           Toggle line numbers
+Space + rn          Toggle relative numbers
+
+-----------------------------------------------------
+ FILE EXPLORER (NvimTree)
+-----------------------------------------------------
+Ctrl + n            Toggle file explorer
+Space + e           Focus file explorer
+
+-----------------------------------------------------
+ FIND / SEARCH (Telescope)
+-----------------------------------------------------
+Space + ff          Find files
+Space + fw          Live grep (search text in project)
+Space + fb          Find open buffers
+Space + fo          Recent / old files
+Space + th          Change theme
+Space + fh          Help tags
+Space + gt          Git status
+
+-----------------------------------------------------
+ TERMINAL
+-----------------------------------------------------
+Alt + i             Toggle floating terminal
+Alt + h             Toggle horizontal terminal
+Alt + v             Toggle vertical terminal
+Space + h           New horizontal terminal
+Space + v           New vertical terminal
+Ctrl + x            Exit terminal mode (go to normal mode)
+
+-----------------------------------------------------
+ WINDOW NAVIGATION
+-----------------------------------------------------
+Ctrl + h            Move to left window
+Ctrl + l            Move to right window
+Ctrl + j            Move to bottom window
+Ctrl + k            Move to top window
+
+-----------------------------------------------------
+ EDITING
+-----------------------------------------------------
+Space + /           Toggle comment
+Space + fm          Format file
+
+-----------------------------------------------------
+ WHICH-KEY
+-----------------------------------------------------
+Space + wK          Show all keymaps
+Space + wk          Query specific keymaps
+
+=====================================================
+Tip: Press Space and wait 1 second to see which-key
+popup with available commands.
+===================================================== 

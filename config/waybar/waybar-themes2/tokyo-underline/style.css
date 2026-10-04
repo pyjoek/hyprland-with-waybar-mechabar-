@@ -1,0 +1,70 @@
+/* TOKYO UNDERLINE — flat full-width bar, coloured underlines instead of pills */
+
+@define-color bg     #1a1b26;
+@define-color fg     #c0caf5;
+@define-color dim    #565f89;
+@define-color blue   #7aa2f7;
+@define-color cyan   #7dcfff;
+@define-color green  #9ece6a;
+@define-color yellow #e0af68;
+@define-color orange #ff9e64;
+@define-color purple #bb9af7;
+@define-color red    #f7768e;
+
+* {
+    border: none; border-radius: 0; min-height: 0;
+    box-shadow: none; text-shadow: none; background-image: none;
+    font-family: "JetBrainsMono Nerd Font"; font-size: 13px;
+}
+
+window#waybar { background: alpha(@bg, 0.94); color: @fg; }
+
+.modules-left   { margin-left: 4px; }
+.modules-right  { margin-right: 4px; }
+
+#custom-appmenu, #clock, #cpu, #memory, #network,
+#backlight, #pulseaudio, #battery, #bluetooth, #tray, #window {
+    padding: 0 12px; margin: 0 2px;
+    border-bottom: 2px solid transparent;
+    transition: background 0.2s ease;
+}
+#custom-appmenu:hover, #clock:hover, #cpu:hover, #memory:hover,
+#network:hover, #backlight:hover, #pulseaudio:hover, #battery:hover, #bluetooth:hover, #tray:hover {
+    background: alpha(@fg, 0.06);
+}
+
+#custom-appmenu { color: @blue;   border-bottom-color: @blue;   font-size: 17px; }
+#clock          { color: @fg;     border-bottom-color: @dim; }
+#cpu            { color: @cyan;   border-bottom-color: @cyan; }
+#memory         { color: @purple; border-bottom-color: @purple; }
+#network        { color: @blue;   border-bottom-color: @blue; }
+#backlight      { color: @yellow; border-bottom-color: @yellow; }
+#pulseaudio     { color: @orange; border-bottom-color: @orange; }
+#battery        { color: @green;  border-bottom-color: @green; }
+
+#workspaces button {
+    color: @dim; background: transparent;
+    padding: 0 10px; margin: 0 1px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease;
+}
+#workspaces button:hover  { color: @fg; background: alpha(@fg, 0.06); }
+#workspaces button.active { color: @blue; border-bottom-color: @blue; }
+#workspaces button.urgent { color: @red;  border-bottom-color: @red; }
+
+#network.disconnected, #pulseaudio.muted { color: @dim; border-bottom-color: @dim; }
+#battery.warning:not(.charging)  { color: @yellow; border-bottom-color: @yellow; }
+#battery.critical:not(.charging) { color: @red;    border-bottom-color: @red; }
+
+tooltip { background: @bg; border: 1px solid @dim; }
+tooltip label { color: @fg; padding: 4px; }
+
+#window { color: @dim; }
+#bluetooth { color: @cyan; border-bottom-color: @cyan; }
+#bluetooth.off, #bluetooth.disabled { color: @dim; border-bottom-color: @dim; }
+#tray { border-bottom-color: @dim; }
+
+/* hide the title pill when no window is open */
+window#waybar.empty #window { background: transparent; border-color: transparent; padding: 0; margin: 0; }
+#tray > .passive         { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }

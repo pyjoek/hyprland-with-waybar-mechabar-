@@ -1,0 +1,67 @@
+/* NEON CYBER — sharp outlines, glow text, blinking critical battery */
+
+@define-color bg      #0a0a12;
+@define-color fg      #d8f6ff;
+@define-color dim     #4a4a63;
+@define-color cyan    #00f0ff;
+@define-color magenta #ff2a6d;
+@define-color yellow  #fcee0a;
+@define-color purple  #b967ff;
+@define-color green   #05ffa1;
+
+* {
+    border: none; border-radius: 0; min-height: 0;
+    box-shadow: none; background-image: none;
+    font-family: "JetBrainsMono Nerd Font"; font-size: 13px; font-weight: bold;
+}
+
+window#waybar { background: transparent; color: @fg; }
+
+.modules-left   { margin-left: 8px; }
+.modules-right  { margin-right: 8px; }
+
+#custom-appmenu, #clock, #workspaces, #cpu, #memory, #network,
+#backlight, #pulseaudio, #battery {
+    background: alpha(@bg, 0.88);
+    padding: 0 12px; margin: 6px 3px; border-radius: 2px;
+    border: 1px solid alpha(@cyan, 0.5);
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+#custom-appmenu { color: @cyan;    border-color: alpha(@cyan, 0.7);    text-shadow: 0 0 8px @cyan;    font-size: 17px; }
+#clock          { color: @fg;      border-color: alpha(@fg, 0.4); }
+#cpu            { color: @yellow;  border-color: alpha(@yellow, 0.6);  text-shadow: 0 0 6px alpha(@yellow, 0.8); }
+#memory         { color: @purple;  border-color: alpha(@purple, 0.6);  text-shadow: 0 0 6px alpha(@purple, 0.8); }
+#network        { color: @cyan;    border-color: alpha(@cyan, 0.6);    text-shadow: 0 0 6px alpha(@cyan, 0.8); }
+#backlight      { color: @yellow;  border-color: alpha(@yellow, 0.6);  text-shadow: 0 0 6px alpha(@yellow, 0.8); }
+#pulseaudio     { color: @magenta; border-color: alpha(@magenta, 0.6); text-shadow: 0 0 6px alpha(@magenta, 0.8); }
+#battery        { color: @green;   border-color: alpha(@green, 0.6);   text-shadow: 0 0 6px alpha(@green, 0.8); }
+
+#custom-appmenu:hover, #cpu:hover, #memory:hover, #network:hover,
+#backlight:hover, #pulseaudio:hover, #battery:hover, #clock:hover {
+    background: alpha(@cyan, 0.10); border-color: @cyan;
+}
+
+#workspaces { padding: 0 3px; border-color: alpha(@purple, 0.6); }
+#workspaces button {
+    color: @dim; background: transparent;
+    padding: 0 9px; margin: 3px 2px; border-radius: 2px;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+#workspaces button:hover  { color: @fg; }
+#workspaces button.active { color: @bg; background: @cyan; text-shadow: none; }
+#workspaces button.urgent { color: @bg; background: @magenta; text-shadow: none; }
+
+#network.disconnected, #pulseaudio.muted { color: @dim; border-color: @dim; text-shadow: none; }
+#battery.warning:not(.charging) { color: @yellow; border-color: @yellow; }
+
+@keyframes blink { to { background-color: @magenta; color: @bg; } }
+#battery.critical:not(.charging) {
+    color: @magenta; border-color: @magenta;
+    animation-name: blink; animation-duration: 0.6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite; animation-direction: alternate;
+}
+
+tooltip { background: @bg; border: 1px solid @cyan; border-radius: 2px; }
+tooltip label { color: @fg; padding: 4px; }
